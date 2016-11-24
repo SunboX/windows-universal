@@ -314,6 +314,7 @@ namespace NextcloudApp.ViewModels
             get { return _selectedFileOrFolder; }
             set
             {
+                if (Directory.IsSelecting) return;
                 if (_isNavigatingBack)
                 {
                     return;
@@ -347,7 +348,6 @@ namespace NextcloudApp.ViewModels
                 }
                 if (value.IsDirectory())
                 {
-                    if (Directory.IsSelecting) return;
                     Directory.PathStack.Add(new PathInfo
                     {
                         ResourceInfo = value
