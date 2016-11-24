@@ -9,12 +9,7 @@ namespace NextcloudApp.Converter
     {
         public object Convert(object value, Type targetType, object parameter, string language)
         {
-            var invert = parameter != null;
-            if (value is bool && (bool)value)
-            {
-                return !invert ? ListViewSelectionMode.None : ListViewSelectionMode.Single;
-            }
-            return !invert ? ListViewSelectionMode.Single : ListViewSelectionMode.None;
+            return value;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, string language)

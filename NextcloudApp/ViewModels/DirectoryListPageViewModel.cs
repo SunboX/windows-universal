@@ -39,6 +39,7 @@ namespace NextcloudApp.ViewModels
         public ICommand DeleteResourceCommand { get; private set; }
         public ICommand RenameResourceCommand { get; private set; }
         public ICommand MoveResourceCommand { get; private set; }
+        public ICommand SelectToggleCommand { get; private set; }
 
         public DirectoryListPageViewModel(INavigationService navigationService, IResourceLoader resourceLoader, DialogService dialogService)
         {
@@ -81,6 +82,10 @@ namespace NextcloudApp.ViewModels
                 ShowProgressIndicator();
                 await Directory.Refresh();
                 HideProgressIndicator();
+            });
+            SelectToggleCommand = new DelegateCommand(() =>
+            {
+                Directory.ToggleSelectionMode();
             });
             CreateDirectoryCommand = new DelegateCommand(CreateDirectory);
             UploadFilesCommand = new DelegateCommand(UploadFiles);
@@ -342,6 +347,7 @@ namespace NextcloudApp.ViewModels
                 }
                 if (value.IsDirectory())
                 {
+                    if (Directory.IsSelecting) return;
                     Directory.PathStack.Add(new PathInfo
                     {
                         ResourceInfo = value

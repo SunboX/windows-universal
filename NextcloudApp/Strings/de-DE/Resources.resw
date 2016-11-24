@@ -368,4 +368,7 @@ Möchten Sie die Anwendungsentwickler informieren und den vorbereiteten Fehlerbe
   <data name="Download.Text" xml:space="preserve">
     <value>Herunterladen</value>
   </data>
+  <data name="AppBarSelect.Label" xml:space="preserve">
+    <value>Auswählen</value>
+  </data>
 </root>
