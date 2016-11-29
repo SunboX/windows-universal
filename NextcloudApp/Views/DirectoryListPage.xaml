@@ -330,7 +330,11 @@
                 Icon="Bullets" 
                 Label="Select" 
                 Command="{Binding SelectToggleCommand}"/>
-            <AppBarButton Icon="Sort" Label="Sort" x:Uid="AppBarSort">
+            <AppBarButton
+                Icon="Sort" 
+                Label="Sort" 
+                x:Uid="AppBarSort"
+                Visibility="{Binding Directory.IsSelecting, Converter={StaticResource IsSelectingToVisibilityConverter}, ConverterParameter=true}">
                 <AppBarButton.Flyout>
                     <MenuFlyout>
                         <MenuFlyoutItem 
@@ -362,7 +366,11 @@
                     </MenuFlyout>
                 </AppBarButton.Flyout>
             </AppBarButton>
-            <AppBarButton Icon="Add" Label="Add" x:Uid="AppBarAdd">
+            <AppBarButton
+                Icon="Add" 
+                Label="Add" 
+                x:Uid="AppBarAdd"
+                Visibility="{Binding Directory.IsSelecting, Converter={StaticResource IsSelectingToVisibilityConverter}, ConverterParameter=true}">>
                 <AppBarButton.Flyout>
                     <MenuFlyout>
                         <MenuFlyoutItem 
@@ -392,6 +400,20 @@
                     </MenuFlyout>
                 </AppBarButton.Flyout>
             </AppBarButton>
+            <AppBarButton
+                Icon="Delete"
+                x:Uid="AppBarButtonDelete"
+                Label="Delete"
+                Command="{Binding DataContext.DeleteResourceCommand, ElementName=Page}"
+                CommandParameter="{Binding}"
+                Visibility="{Binding Directory.IsSelecting, Converter={StaticResource IsSelectingToVisibilityConverter}}"/>
+            <AppBarButton
+                Icon="Download"
+                x:Uid="AppBarButtonDownloadAsZip"
+                Label="Download as ZIP file"
+                Command="{Binding DataContext.DownloadResourceCommand, ElementName=Page}"
+                CommandParameter="{Binding}"
+                Visibility="{Binding Directory.IsSelecting, Converter={StaticResource IsSelectingToVisibilityConverter}}"/>
         </CommandBar>
     </Grid>
 

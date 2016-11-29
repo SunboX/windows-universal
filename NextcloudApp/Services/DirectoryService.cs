@@ -249,6 +249,7 @@ namespace NextcloudApp.Services
                 }
                 _isSelecting = value;
                 SelectionMode = _isSelecting ? "Multiple" : "Single";
+                OnPropertyChanged();
             }
         }
 
