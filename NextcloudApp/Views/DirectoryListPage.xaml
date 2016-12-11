@@ -99,7 +99,7 @@
                     Name="FileOrFolderListView"
                     SelectedIndex="-1"
                     IsHoldingEnabled="True" 
-                    ItemsSource="{Binding Source={StaticResource GroupedFilesAndFolders}}" 
+                    ItemsSource="{Binding Source={StaticResource GroupedFilesAndFolders}}"
                     SelectedItem="{Binding SelectedFileOrFolder, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                     SelectionMode="{Binding Directory.SelectionMode}" 
                     Padding="0,2,0,2"
@@ -126,6 +126,7 @@
                     <ListView.ItemContainerStyle>
                         <Style TargetType="ListViewItem">
                             <Setter Property="Padding" Value="4,2,4,2"/>
+                            <!--<Setter Property="IsSelected" Value="{Binding IsSelected}"/>-->
                         </Style>
                     </ListView.ItemContainerStyle>
                     <ListView.GroupStyle>
@@ -237,7 +238,7 @@
 
                                 <interactivity:Interaction.Behaviors>
                                     <core:EventTriggerBehavior EventName="Holding">
-                                    <actions:OpenMenuFlyoutAction />
+                                        <actions:OpenMenuFlyoutAction />
                                     </core:EventTriggerBehavior>
                                     <core:EventTriggerBehavior EventName="RightTapped">
                                         <actions:OpenMenuFlyoutAction />
@@ -411,14 +412,14 @@
                 Icon="Download"
                 x:Uid="AppBarButtonDownloadAsZip"
                 Label="Download as ZIP file"
-                Command="{Binding DataContext.DownloadResourceCommand, ElementName=Page}"
+                Command="{Binding DataContext.DownloadSelectedCommand, ElementName=Page}"
                 CommandParameter="{Binding}"
                 Visibility="{Binding Directory.IsSelecting, Converter={StaticResource IsSelectingToVisibilityConverter}}"/>
             <AppBarButton
                 Icon="MoveToFolder"
                 x:Uid="MoveTo_Label"
                 Label="Move to"
-                Command="{Binding DataContext.DeleteResourceCommand, ElementName=Page}"
+                Command="{Binding DataContext.MoveResourceCommand, ElementName=Page}"
                 CommandParameter="{Binding}"
                 Visibility="{Binding Directory.IsSelecting, Converter={StaticResource IsSelectingToVisibilityConverter}}"/>
         </CommandBar>

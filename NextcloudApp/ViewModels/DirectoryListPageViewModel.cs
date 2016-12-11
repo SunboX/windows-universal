@@ -36,6 +36,7 @@ namespace NextcloudApp.ViewModels
         public ICommand UploadFilesCommand { get; private set; }
         public ICommand UploadPhotosCommand { get; private set; }
         public ICommand DownloadResourceCommand { get; private set; }
+        public ICommand DownloadSelectedCommand { get; private set; }
         public ICommand DeleteResourceCommand { get; private set; }
         public ICommand RenameResourceCommand { get; private set; }
         public ICommand MoveResourceCommand { get; private set; }
@@ -87,10 +88,12 @@ namespace NextcloudApp.ViewModels
             {
                 Directory.ToggleSelectionMode();
             });
+
             CreateDirectoryCommand = new DelegateCommand(CreateDirectory);
             UploadFilesCommand = new DelegateCommand(UploadFiles);
             UploadPhotosCommand = new DelegateCommand(UploadPhotos);
             DownloadResourceCommand = new RelayCommand(DownloadResource);
+            DownloadSelectedCommand = new RelayCommand(DownloadSelected);
             DeleteResourceCommand = new RelayCommand(DeleteResource);
             RenameResourceCommand = new RelayCommand(RenameResource);
             MoveResourceCommand = new RelayCommand(MoveResource);
@@ -128,6 +131,14 @@ namespace NextcloudApp.ViewModels
                 ResourceInfo = resourceInfo
             };
             _navigationService.Navigate(PageTokens.SingleFileDownload.ToString(), parameters.Serialize());
+        }
+
+        
+        private void DownloadSelected(object parameter)
+        {
+            //ListView.SelectedItems fileFolder
+
+            return;
         }
 
         private void MoveResource(object parameter)
