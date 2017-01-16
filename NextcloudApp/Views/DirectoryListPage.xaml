@@ -413,7 +413,7 @@
                 x:Uid="AppBarButtonDownloadAsZip"
                 Label="Download as ZIP file"
                 Command="{Binding DataContext.DownloadSelectedCommand, ElementName=Page}"
-                CommandParameter="{Binding}"
+                CommandParameter="{Binding ElementName=FileOrFolderListView}"
                 Visibility="{Binding Directory.IsSelecting, Converter={StaticResource IsSelectingToVisibilityConverter}}"/>
             <AppBarButton
                 Icon="MoveToFolder"

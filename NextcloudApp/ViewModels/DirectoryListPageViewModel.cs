@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq.Expressions;
 using System.Windows.Input;
 using Windows.Storage.Pickers;
@@ -136,7 +137,20 @@ namespace NextcloudApp.ViewModels
         
         private void DownloadSelected(object parameter)
         {
-            //ListView.SelectedItems fileFolder
+            var listView = parameter as ListView;
+
+            if (listView != null)
+            {
+                foreach (var selectedItem in listView.SelectedItems)
+                {
+                    var resourceInfo = selectedItem as ResourceInfo;
+
+                    if (resourceInfo != null)
+                    {
+                        Debug.WriteLine(resourceInfo);
+                    }
+                }
+            }
 
             return;
         }
